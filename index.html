@@ -7,19 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form>
-        <input type="text" id="nuevaTarea" placeholder="Agregar nueva tarea">
-        <button type="button" onclick="agregarTarea()">Agregar</button>
+    <h1>Gestor de Tareas</h1>
+    <!-- Formulario para agregar tareas -->
+    <form onsubmit="event.preventDefault(); agregarTarea();">
+        <input type="text" id="nuevaTarea" placeholder="Agregar nueva tarea" required>
+        <button type="submit">Agregar</button>
     </form>
-    <ul id="listaTareas"></ul>
-    <script src="app.js"></script>
 
-    <form>
-        <input type="text" id="ObtenerTarea" placeholder="Obtener tarea">
-        <button type="button" onclick="obtenerTareas()">Obtener</button>
-    </form>
+    <!-- Lista de tareas -->
     <ul id="listaTareas"></ul>
+
     <script src="app.js"></script>
-    
 </body>
 </html>

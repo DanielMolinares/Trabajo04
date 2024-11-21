@@ -52,18 +52,23 @@ app.get('/tareas', (req, res) => {
     });
 
 //eliminar tareas
+// Ruta para eliminar una tarea
 app.delete('/tareas/:id', (req, res) => {
-const { id } = req.params;
-const query = `DELETE FROM tareas WHERE id = ?`;
-db.run(query, id, function (err) {
-if (err) {
+    const { id } = req.params;
+    const query = `DELETE FROM tareas WHERE id = ?`;
+    db.run(query, id, function (err) {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        if (this.changes > 0) {
+            res.json({ message: 'Tarea eliminada correctamente' });
+        } else {
+            res.status(404).json({ error: 'Tarea no encontrada' });
+        }
+    });
+});
 
-res.status(400).json({ error: err.message });
-return;
-}
-res.json({ message: 'Tarea eliminada correctamente' });
-});
-});
 
 
 
